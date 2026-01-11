@@ -112,11 +112,6 @@ Formatted Response with Citations
    ```bash
    python 02_vector_ingestion.py
    ```
-   
-   For ChromaDB Cloud:
-   ```bash
-   python vectordb_ingestion.py
-   ```
 
 6. **Add NOYB Decision Cases** (if available as PDFs or JSON)
    
