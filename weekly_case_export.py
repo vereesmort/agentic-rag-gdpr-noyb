@@ -21,7 +21,7 @@ def get_page_data(title):
     # Fetches metadata and summary using the MediaWiki Parse API
     data = {"Page Title": title}
 
-    # Find English Summary section index, these have a different
+    # Find English Summary section index, these have a different id from the case
     sections_params = {
         "action": "parse",
         "page": title,
