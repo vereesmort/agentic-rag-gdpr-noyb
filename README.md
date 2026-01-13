@@ -194,6 +194,21 @@ The system provides structured responses with:
 - **Summary**: Brief summary tying together the information
 - **Additional Notes**: Limitations or related information
 
+### Dynamic data ingestion
+
+As legislation changes and new cases are open weekly as well as resolutions published,
+this project must account for this dynamic nature of the privacy state within EU. 
+
+For achieving this, the project relies heavily on noyb's GDPRHub with a weekly execution of
+the _weekly_case_export.py_ script.
+
+The script runs every Monday at 00:01, it then retrieves the titles of the past week cases,
+finds the summaries in HTML format, cleans it to keep only the text, and aggregates them with the remaining metadata. 
+
+These are later exported into a JSON file and ingested by ChromaDB. 
+
+With this, the agent is able to keep up with the latest updates in regard to data privacy.
+
 ## Configuration
 
 ### Model Selection
