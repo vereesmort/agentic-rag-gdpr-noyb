@@ -8,8 +8,10 @@ SESSION.headers.update({"User-Agent": "gdpr-rag-bot/0.1 (contact: you@example.co
 
 def get_candidate_titles(prefix="A", limit_pages=5000):
     """
-    Get a broad set of titles starting at a given prefix (apfrom).
-    You can call this multiple times with different prefixes (A, B, C, ...).
+    Retrieve page titles from gdprhub.eu API, starting from a given prefix.
+    
+    Uses the MediaWiki API to paginate through all pages. Can be called
+    multiple times with different prefixes to get all titles.
     """
     titles = []
     apcontinue = None
@@ -42,12 +44,9 @@ def get_candidate_titles(prefix="A", limit_pages=5000):
 
 def looks_like_gdpr_article(title: str) -> bool:
     """
-    Heuristic filter – adapt once you see real titles from gdprhub.
-
-    Examples you might see (check in browser and then tweak):
-      - 'Knowledge database - GDPR Article 5'
-      - 'Article 5 GDPR – Principles relating to processing'
-      - 'Knowledge database: Article 5 GDPR'
+    Check if a page title looks like a GDPR article.
+    
+    Currently checks if both "article" and "gdpr" appear in the title.
     """
     t = title.lower()
     return "article" in t and "gdpr" in t
